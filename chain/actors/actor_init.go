@@ -172,7 +172,7 @@ func IsSingletonActor(code cid.Cid) bool {
 	return code == StoragePowerCodeCid || code == StorageMarketCodeCid || code == InitCodeCid || code == CronCodeCid
 }
 
-func (ias *InitActorState) AddActor(cst *hamt.CborIpldStore, addr address.Address) (address.Address, error) {
+func (ias *InitActorState) AddActor(cst hamt.CborIpldStore, addr address.Address) (address.Address, error) {
 	nid := ias.NextID
 
 	amap, err := hamt.LoadNode(context.TODO(), cst, ias.AddressMap)
@@ -198,7 +198,7 @@ func (ias *InitActorState) AddActor(cst *hamt.CborIpldStore, addr address.Addres
 	return NewIDAddress(nid)
 }
 
-func (ias *InitActorState) Lookup(cst *hamt.CborIpldStore, addr address.Address) (address.Address, error) {
+func (ias *InitActorState) Lookup(cst hamt.CborIpldStore, addr address.Address) (address.Address, error) {
 	amap, err := hamt.LoadNode(context.TODO(), cst, ias.AddressMap)
 	if err != nil {
 		return address.Undef, xerrors.Errorf("ias lookup failed loading hamt node: %w", err)
