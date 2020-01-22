@@ -3,9 +3,10 @@ package actors_test
 import (
 	"bytes"
 	"context"
-	"github.com/filecoin-project/go-sectorbuilder"
 	"math/rand"
 	"testing"
+
+	"github.com/filecoin-project/go-sectorbuilder"
 
 	"github.com/ipfs/go-cid"
 	dstore "github.com/ipfs/go-datastore"
